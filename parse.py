@@ -1,4 +1,4 @@
-#!/usr/local/python_2.7/bin/python
+#!/usr/bin/env python
 
 import json, httplib, sys, webbrowser, traceback
 from commands import getoutput
@@ -20,7 +20,7 @@ from commands import getoutput
 
 #Global Variables
 #Default (current) semester. Must currently be set manually.
-semester="92012"
+semester="12013"
 
 
 #Recursive print of the dictionary (covers sub-dictionaries such as sections)
