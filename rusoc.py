@@ -11,6 +11,7 @@ from commands import getoutput
 #1 : Failure (section closed)
 #2 : Invalid input/arguments
 #3 : No response (class/subject does not exist)
+#4 : No Internet Connection
 
 #TODO
 #1) Find a way to have a decent ldap system.
@@ -41,8 +42,8 @@ def printDict(dict,tab):
                 print('None')
         #elif (dict[key]) is None):
         #    print
-        else:
-            print(dict[key])
+    else:
+        print(dict[key])
     print
 
 #Simple linear search for the course. Dump all the info to stdout.
@@ -184,10 +185,13 @@ def getSubjectName(dict,subject):
 
 def loadSubjectDict(semester):
     url="/soc/subjects.json?semester="+semester+"&campus=NB&level=U"
-    conn = httplib.HTTPConnection("sis.rutgers.edu")
-    conn.request("GET",url)
-    resp = conn.getresponse()
-    return json.loads(resp.read())
+    try:
+        conn = httplib.HTTPConnection("sis.rutgers.edu")
+        conn.request("GET",url)
+        resp = conn.getresponse()
+        return json.loads(resp.read())
+    except:
+        exit(0);
 
 def loadDict(subject,semester):
     url="/soc/courses.json?subject="+str(subject)+"&semester="+semester+"&campus=NB&level=U"
@@ -297,7 +301,7 @@ while (i < len(sys.argv)):
         subject=courseNum[len(courseNum)-2]
         if (len(courseNum) > 1):
             course=courseNum[len(courseNum)-1]
-       
+
         if (subject!=oldSubject):
             #print("load dict")
             #Retrieve and load JSON into dict

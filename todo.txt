@@ -1,3 +1,5 @@
 Some things I want to get to in the future:
 
-1) Find some way to get the most recent semester when they are released.
+1)  Find some way to get the most recent semester when they are released.
+2)  Connect with the public rutgers ldap to retrieve emails of professors for 
+    special permission numbers
