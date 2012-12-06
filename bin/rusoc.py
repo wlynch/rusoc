@@ -56,6 +56,16 @@ def searchCourseNum(dict, course):
         x+=1
     exit(3) 
 
+#Simple linear search for the course. Dump all the info to stdout.
+def getJSON(dict, course):
+    x=0
+    while (x<len(dict)):
+        if (dict[x]['courseNumber'] == course):
+            print dict[x];
+            return 0
+        x+=1
+    exit(3) 
+
 # Go through each class, print courseNum, class name, and num sections open
 def listAllCourses(dict, subject):
     x=0
@@ -261,7 +271,7 @@ if (len(sys.argv) <= 2):
     help()
     exit(2)
 
-commands=["list","info","search","isOpen","register","email","dump"]
+commands=["list","info","search","isOpen","register","email","dump","json"]
 if (commands.count(sys.argv[1])==0):
     help()
     exit(2)
@@ -324,6 +334,13 @@ while (i < len(sys.argv)):
             if (i>2):
                 print
             searchCourseNum(dict,course)
+        elif (sys.argv[1]=="json"):
+            if (i>2):
+                print
+            if (course==0):
+                print dict
+            else:
+                getJSON(dict,course)
         elif (sys.argv[1]=="info"):
             if (i>2):
                 print
