@@ -21,7 +21,7 @@ from commands import getoutput
 
 #Global Variables
 #Default (current) semester. Must currently be set manually.
-semester="12013"
+semester="92013"
 
 
 #Recursive print of the dictionary (covers sub-dictionaries such as sections)
